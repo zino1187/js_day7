@@ -6,25 +6,50 @@
 <script>
 var stage;
 var y=0;//배경의 y값을계속 증가시켜 나갈 전역 변수!!
+var gapX=20; //적군과 적군의 간격을 결정하는 변수
+var gapY=25;
 
 function init(){
 	stage=document.getElementById("stage");
 	createBg();
+	setInterval("moveBg()",50);
+	createEnemy();//적군생성!!
+
+	/* 수동 테스용...
 	stage.addEventListener("mousemove",function(){
 		moveBg();				
 	});
+	*/
 }
 function createBg(){
 	stage.style.background="url(../res/gallerxy/bg.png)";
 	stage.style.width="1000px";
 	stage.style.height="800px";
 	stage.style.margin="auto";
+	stage.style.position="relative";//이거 하지 않으면 자식이 
+											//body를 기준으로 위치하게 된다..
 }
 //배경의 y축값을 증가시킨다 ( = 날아가는 효과)
 function moveBg(){
 	y+=10;
 	stage.style.backgroundPosition="0px "+y+"px";
 }
+//적군 생성하기!!
+function createEnemy(){
+	for(var a=1;a<=4;a++){	
+		for(var i=1;i<=10;i++){
+			var img=document.createElement("img");
+			img.src="../res/gallerxy/enemy2.png";
+			img.style.position="absolute";//근접한 부모를 기준으로 한위치
+			img.style.top=50+((50+gapY)*a)+"px";
+			img.style.left=50+((50+gapX)*i)+"px";
+			img.style.width=50+"px";
+			//stage에 자식요소로 부착!!
+			stage.appendChild(img);
+		}
+	}
+}
+
 window.addEventListener("load", function(){
 	init();
 });
