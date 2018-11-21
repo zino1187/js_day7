@@ -13,6 +13,7 @@ var a=0.1;  //1에 가까울 수록 투박해짐..
 
 function init(){
 	createRect();	
+	setInterval("setSize()",10);
 }
 function createRect(){
 	div=document.createElement("div");
@@ -33,11 +34,11 @@ addEventListener("load", function(){
 
 	div.addEventListener("mouseover",function(){
 		targetH=500;
-		setSize();
+		///setSize();
 	});
 
 	div.addEventListener("mouseout",function(){
-		//targetH=40;
+		targetH=40;
 		//setSize();
 	});
 });
