@@ -44,6 +44,11 @@ function createEnemy(){
 			img.style.top=50+((50+gapY)*a)+"px";
 			img.style.left=50+((50+gapX)*i)+"px";
 			img.style.width=50+"px";
+
+			img.addEventListener("mouseover",function(){
+				stage.removeChild(this);
+			});
+
 			//stage에 자식요소로 부착!!
 			stage.appendChild(img);
 		}
