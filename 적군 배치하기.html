@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>적군 배치하기</title>
+<script>
+var stage;
+var y=0;//배경의 y값을계속 증가시켜 나갈 전역 변수!!
+
+function init(){
+	stage=document.getElementById("stage");
+	createBg();
+	stage.addEventListener("mousemove",function(){
+		moveBg();				
+	});
+}
+function createBg(){
+	stage.style.background="url(../res/gallerxy/bg.png)";
+	stage.style.width="1000px";
+	stage.style.height="800px";
+	stage.style.margin="auto";
+}
+//배경의 y축값을 증가시킨다 ( = 날아가는 효과)
+function moveBg(){
+	y+=10;
+	stage.style.backgroundPosition="0px "+y+"px";
+}
+window.addEventListener("load", function(){
+	init();
+});
+</script>
+</head>
+<body>
+	<div id="stage"></div>
+</body>
+</html>
